@@ -1,0 +1,39 @@
+{
+  "funds": [
+    {
+      "code": "400015",
+      "holdingAmount": 5526.45,
+      "holdingProfit": 832.23
+    },
+    {
+      "code": "018125",
+      "holdingAmount": 13073.21,
+      "holdingProfit": 1110.46
+    },
+     {
+      "code": "014143",
+      "holdingAmount": 13073.21,
+      "holdingProfit": 1110.46
+    },
+      {
+      "code": "025209",
+      "holdingAmount": 13073.21,
+      "holdingProfit": 1110.46
+    },
+   {
+      "code": "017994",
+      "holdingAmount": 13073.21,
+      "holdingProfit": 1110.46
+    },
+    {
+      "code": "018463",
+      "holdingAmount": 13073.21,
+      "holdingProfit": 1110.46
+    },
+    {
+      "code": "003096",
+      "holdingAmount": 13073.21,
+      "holdingProfit": 1110.46
+    }
+  ]
+}

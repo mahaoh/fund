@@ -15,43 +15,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-    env:
-      NODE_ENV: development
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-          cache: "npm"
-
-      - name: Install dependencies (including dev)
-        run: |
-          npm config set omit ""
-          npm install --include=dev --no-audit --no-fund
-
-      - name: Force install build tooling
-        run: npm install vite@5.4.21 @vitejs/plugin-vue@5.1.0 esbuild@0.21.5 --no-save --no-audit --no-fund
-
-      - name: Build
-        run: npx --yes vite@5.4.21 build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

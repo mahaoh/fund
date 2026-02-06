@@ -7,9 +7,6 @@ yarn-error.log*
 *.local
 .vite
 
-# build
-/dist
-
 # env
 .env
 .env.*

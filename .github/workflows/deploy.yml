@@ -31,10 +31,10 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci --include=dev
+        run: npm install
 
       - name: Build
-        run: npm run build
+        run: npx vite build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

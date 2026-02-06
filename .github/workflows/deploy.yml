@@ -34,8 +34,11 @@ jobs:
           npm config set omit ""
           npm install --include=dev --no-audit --no-fund
 
+      - name: Force install build tooling
+        run: npm install vite@5.4.21 @vitejs/plugin-vue@5.1.0 esbuild@0.21.5 --no-save --no-audit --no-fund
+
       - name: Build
-        run: npm run build
+        run: npx --yes vite@5.4.21 build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

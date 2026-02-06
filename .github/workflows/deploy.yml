@@ -31,9 +31,10 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: |
-          npm config set production false
-          npm install --include=dev --no-audit --no-fund
+        env:
+          NPM_CONFIG_OMIT: ""
+          NODE_ENV: development
+        run: npm install --no-audit --no-fund
 
       - name: Verify vite
         run: |

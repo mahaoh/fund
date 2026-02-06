@@ -32,17 +32,11 @@ jobs:
 
       - name: Install dependencies
         env:
-          NPM_CONFIG_OMIT: ""
           NODE_ENV: development
-        run: npm install --no-audit --no-fund
-
-      - name: Verify vite
-        run: |
-          npm ls vite
-          ls -la node_modules/vite || true
+        run: npm install --include=dev --no-audit --no-fund
 
       - name: Build
-        run: node ./node_modules/vite/bin/vite.js build
+        run: npx --yes vite@5.4.21 build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

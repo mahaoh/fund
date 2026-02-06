@@ -17,6 +17,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: development
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,11 +29,10 @@ jobs:
           node-version: "18"
           cache: "npm"
 
-      - name: Install dependencies
-        run: npm install --no-audit --no-fund
-
-      - name: Ensure Vite
-        run: npm install vite@5.4.21 @vitejs/plugin-vue@5.1.0 --no-audit --no-fund
+      - name: Install dependencies (including dev)
+        run: |
+          npm config set omit ""
+          npm install --include=dev --no-audit --no-fund
 
       - name: Build
         run: npm run build

@@ -31,10 +31,17 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm config set production false
+          npm install --include=dev --no-audit --no-fund
+
+      - name: Verify vite
+        run: |
+          npm ls vite
+          ls -la node_modules/vite || true
 
       - name: Build
-        run: npx vite build
+        run: node ./node_modules/vite/bin/vite.js build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
